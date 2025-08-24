@@ -10,25 +10,19 @@ Jogo Tower Defense desenvolvido em Processing que implementa conceitos de Teoria
 - **Algoritmo de Dijkstra**: Inimigos calculam o caminho mais curto até o núcleo
 - **Fila (Queue)**: Gerenciamento das ondas de inimigos
 - **Estruturas Defensivas**:
-  - Parede (custo: $12) - Bloqueia completamente a passagem
-  - Areia (custo: $6) - Reduz a velocidade dos inimigos pela metade
+  - Parede (custo: $1) - Bloqueia completamente a passagem
+  - Areia (custo: $2) - Reduz a velocidade dos inimigos pela metade
   - Torre (custo: $50) - Atira automaticamente nos inimigos próximos com tiro preciso e predição de movimento
 
 ### Mecânicas do Jogo
-- **Núcleo de Energia**: Posicionado na coluna mais à esquerda (vermelho)
+- **Núcleo de Energia**: Posicionado na coluna mais à esquerda
 - **Spawn de Inimigos**: Surgem na coluna mais à direita
 - **Sistema de Recursos**: Jogador começa com $150 e ganha recompensas que aumentam com a onda
 - **Condições de Vitória/Derrota**: 
-  - Vitória: Sobreviver a 10 ondas
+  - Vitória: Sobreviver a 20 ondas
   - Derrota: Um inimigo alcançar o núcleo
-
-### Tipos de Inimigos
-- **Normal**: 6 HP base (aumenta com ondas), velocidade padrão, recompensa $15+ (aumenta com ondas)
-- **Rápido**: 4 HP base (aumenta com ondas), velocidade alta (aparece a partir da onda 3), recompensa $18+ (aumenta com ondas)
-- **Forte**: 12 HP base (aumenta com ondas), velocidade baixa (aparece a partir da onda 5), recompensa $30+ (aumenta com ondas)
-- **Explosivo**: 8 HP base (aumenta com ondas), velocidade média (aparece a partir da onda 7), recompensa $25+ (aumenta com ondas), cor vermelha, explode paredes ao morrer
-- **Tanque**: 25 HP base (aumenta com ondas), velocidade muito baixa (aparece a partir da onda 9), recompensa $40+ (aumenta com ondas), cor azul, tamanho maior
-
+ 
+  - 
 ## Controles
 
 ### Mouse
@@ -68,7 +62,7 @@ Jogo Tower Defense desenvolvido em Processing que implementa conceitos de Teoria
 
 ### Sistema de XP das Torres
 - Torres ganham XP ao matar inimigos
-- Cada inimigo morto dá 5 XP
+- Cada inimigo morto dá 2 XP
 - Torres evoluem automaticamente ao atingir XP suficiente
 - Melhorias: +2 dano, +25 alcance, +0.15s taxa de tiro
 - Sistema de tiro inteligente com predição de movimento
@@ -96,21 +90,3 @@ Jogo Tower Defense desenvolvido em Processing que implementa conceitos de Teoria
 - Pressione T para alternar entre velocidade normal (1x) e rápida (2x)
 - Afeta movimento de inimigos, tiros das torres e spawn de ondas
 
-## Arquivos do Projeto
-
-- `TowerDefense.pde` - Arquivo principal
-- `GameState.pde` - Gerenciamento de estado do jogo
-- `GameGrid.pde` - Grid do jogo e algoritmo de Dijkstra
-- `Enemy.pde` - Classe dos inimigos
-- `Tower.pde` - Classe das torres de defesa
-- `Projectile.pde` - Classe dos projéteis
-- `WaveManager.pde` - Gerenciamento de ondas com fila
-- `Player.pde` - Classe do jogador
-- `UI.pde` - Interface do usuário
-
-## Execução
-
-1. Abra o Processing IDE
-2. Carregue todos os arquivos .pde na mesma pasta
-3. Execute o arquivo `TowerDefense.pde`
-4. Divirta-se defendendo seu núcleo!
