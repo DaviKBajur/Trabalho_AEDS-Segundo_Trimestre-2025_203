@@ -307,10 +307,10 @@ class GameGrid {
         float screenY = y * cellSize;
 
           switch (grid[x][y]) {
-            case EMPTY:
-              fill(0, 150, 100);
+            /*case EMPTY:
+              fill(0, 200, 100);
               rect(screenX, screenY, cellSize, cellSize);
-              break;
+              break;*/
             case WALL:
               fill(80, 80, 80);
               rect(screenX, screenY, cellSize, cellSize);
@@ -345,10 +345,13 @@ class GameGrid {
               
               //image(money, screenX, screenY, cellSize, cellSize);
               
-              float imgSize = cellSize * 1.5;
-              float offset = (imgSize - cellSize) / 2;
-              image(money, screenX - offset, screenY - offset, imgSize, imgSize);
+              float imgSize = cellSize * 2;
+              float offset = (imgSize - cellSize);
+              imageMode(CENTER);
+              image(money, (screenX +20), (screenY ), imgSize, imgSize);
               break;
+              
+              
             case SPAWN:
               fill(255, 50, 0);
               rect(screenX, screenY, cellSize, cellSize);

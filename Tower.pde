@@ -71,14 +71,15 @@ class Tower {
           
          int nivel = level; // supondo que tenha um array com nível
               PImage torreAtual = null;
-              if (nivel == 1) torreAtual = torre2;
+              if (nivel == 1) torreAtual = torreJ2;
               if (nivel == 2) torreAtual = torre3;
               if (nivel == 3) torreAtual = torre4;
               if (nivel == 4) torreAtual = torre5;
               if (nivel >= 5) torreAtual = torre6;
 
               if (torreAtual != null) {
-                image(torreAtual, position.x - 8, position.y - 8, 32, 32);}
+                imageMode(CENTER);
+                image(torreAtual, position.x, position.y, 50, 50);}
           
           
         fill(0, 255, 0, 50);
@@ -86,17 +87,17 @@ class Tower {
         
         fill(255, 0, 0);
         textAlign(CENTER, CENTER);
-        textSize(10);
-        text("Lv." + level, (position.x+7), (position.y-15));
+        textSize(15);
+        text("Lv." + level, (position.x), (position.y-30));
         
         displayXPBar();
     }
     
     private void displayXPBar() {
-        float barWidth = 20;
-        float barHeight = 3;
-        float barX = (position.x - barWidth/2) + 7;
-        float barY = position.y + 12 + 15;
+        float barWidth = 30;
+        float barHeight = 5;
+        float barX = (position.x - barWidth/2);
+        float barY = position.y + 12 + 15 +5;
         
         fill(100, 100, 100);
         rect(barX, barY, barWidth, barHeight);
