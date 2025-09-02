@@ -107,7 +107,7 @@ class Projectile {
     private void displayPredictionLine() {
         stroke(255, 255, 0, 100);
         strokeWeight(1);
-        line(position.x, position.y, predictedTargetPosition.x, predictedTargetPosition.y);
+       // line(position.x, position.y, predictedTargetPosition.x, predictedTargetPosition.y);
         
         fill(255, 255, 0, 50);
         noStroke();

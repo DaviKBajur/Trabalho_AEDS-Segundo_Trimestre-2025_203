@@ -56,7 +56,7 @@ class UI {
         // Caixa de fundo
         fill(40, 40, 40, 200);
         noStroke();
-        rect(panelX, panelY, 280, 130, 15);
+        rect(panelX, panelY, 300, 130, 15);
 
         // Título
         fill(255);
@@ -108,7 +108,7 @@ class UI {
         fill(255);
         textAlign(CENTER, TOP);
         textSize(14);
-        text("⏩ Velocidade: " + (gameSpeed == 1.0f ? "1x" : "2x"), panelX + 85, panelY + 8);
+        text(" Velocidade: " + (gameSpeed == 1.0f ? "1x" : "2x"), panelX + 85, panelY + 8);
 
         textSize(11);
         fill(200);

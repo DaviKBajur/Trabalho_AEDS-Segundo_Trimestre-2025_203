@@ -159,10 +159,10 @@ class GameGrid {
             return 2.0f;
         }
         if (grid[(int)pos.x][(int)pos.y] == CellType.WALL) {
-            return 10.0f; // Custo alto mas não infinito
+            return Float.POSITIVE_INFINITY; 
         }
         if (grid[(int)pos.x][(int)pos.y] == CellType.WALL_DAMAGED) {
-            return 3.0f;
+            return Float.POSITIVE_INFINITY;
         }
         return 1.0f;
     }
@@ -232,10 +232,10 @@ class GameGrid {
                     case FAST:
                         baseReward = 18;
                         break;
-                    case STRONG:
+                    case Dragao:
                         baseReward = 30;
                         break;
-                    case EXPLODER:
+                    case DragaoArm:
                         baseReward = 25;
                         explodeWalls(enemy.getGridPosition());
                         break;
@@ -345,22 +345,36 @@ class GameGrid {
               
               //image(money, screenX, screenY, cellSize, cellSize);
               
-              float imgSize = cellSize * 2;
+              float imgSize = cellSize * 5;
               float offset = (imgSize - cellSize);
+
               imageMode(CENTER);
-              image(money, (screenX +20), (screenY ), imgSize, imgSize);
+
+               pushMatrix();
+
+
+              translate((screenX ) + imgSize / 2, screenY); 
+
+
+              scale(-1, 1);
+
+
+              image(money, 0+20, 0, imgSize+20, imgSize);
+
+              popMatrix();
               break;
               
               
             case SPAWN:
-              fill(255, 50, 0);
-              rect(screenX, screenY, cellSize, cellSize);
+              fill(10, 131, 0, 100);
+              rect(screenX, screenY, cellSize, cellSize, 10);
               break;
           }
-
-          stroke(50);
+           
+          
+          stroke(0, 0, 0, 30);
           noFill();
-          rect(screenX, screenY, cellSize, cellSize);
+          rect(screenX, screenY, cellSize, cellSize, 7);
     }
   }
         
@@ -407,6 +421,21 @@ class GameGrid {
             }
         }
     }
+    
+    
+    void Sell(int X, int Y){
+      
+      int x = X;
+        int y = Y;
+       
+      if (x >= 0 && x < width && y >= 0 && y < height) {
+             grid[x][y] = CellType.EMPTY;
+        }
+            
+        
+        recalculatePaths();
+    }
+    
     
     private void explodeWalls(PVector position) {
         int x = (int)position.x;

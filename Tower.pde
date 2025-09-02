@@ -14,7 +14,7 @@ class Tower {
         this.range = 120;
         this.fireRate = 0.8f;
         this.fireTimer = 0;
-        this.damage = 2;
+        this.damage = 5;
         this.level = 1;
         this.xp = 0;
         this.xpToNextLevel = 10;
@@ -71,7 +71,7 @@ class Tower {
           
          int nivel = level; // supondo que tenha um array com nível
               PImage torreAtual = null;
-              if (nivel == 1) torreAtual = torreJ2;
+              if (nivel == 1) torreAtual = torre2;
               if (nivel == 2) torreAtual = torre3;
               if (nivel == 3) torreAtual = torre4;
               if (nivel == 4) torreAtual = torre5;
@@ -79,16 +79,16 @@ class Tower {
 
               if (torreAtual != null) {
                 imageMode(CENTER);
-                image(torreAtual, position.x, position.y, 50, 50);}
+                image(torreAtual, position.x, position.y, 170, 75);}
           
           
-        fill(0, 255, 0, 50);
+        fill(0, 0, 0, 30);
         ellipse(position.x, position.y, range * 2, range * 2);
         
         fill(255, 0, 0);
         textAlign(CENTER, CENTER);
-        textSize(15);
-        text("Lv." + level, (position.x), (position.y-30));
+        textSize(20);
+        text("Lv." + level, (position.x), (position.y-45));
         
         displayXPBar();
     }
@@ -97,7 +97,7 @@ class Tower {
         float barWidth = 30;
         float barHeight = 5;
         float barX = (position.x - barWidth/2);
-        float barY = position.y + 12 + 15 +5;
+        float barY = position.y + 12 + 15 +10;
         
         fill(100, 100, 100);
         rect(barX, barY, barWidth, barHeight);

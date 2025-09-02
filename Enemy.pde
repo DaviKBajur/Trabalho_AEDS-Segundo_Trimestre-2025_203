@@ -25,29 +25,29 @@ class Enemy {
         
         switch (type) {
             case FAST:
-                this.maxHealth = (int)(4 * healthMultiplier);
-                this.speed = 1.8f;
-                this.moveDelay = 0.4f;
+                this.maxHealth = (int)(20 * healthMultiplier);
+                this.speed = 20f;
+                this.moveDelay = 0.2f;
                 break;
-            case STRONG:
-                this.maxHealth = (int)(12 * healthMultiplier);
-                this.speed = 0.6f;
-                this.moveDelay = 1.0f;
+            case Dragao:
+                this.maxHealth = (int)(25 * healthMultiplier);
+                this.speed = 19f;
+                this.moveDelay = 0f;
                 break;
-            case EXPLODER:
-                this.maxHealth = (int)(8 * healthMultiplier);
-                this.speed = 0.7f;
+            case DragaoArm:
+                this.maxHealth = (int)(50 * healthMultiplier);
+                this.speed = 7f;
                 this.moveDelay = 0.8f;
                 break;
             case TANK:
-                this.maxHealth = (int)(25 * healthMultiplier);
-                this.speed = 0.4f;
+                this.maxHealth = (int)(200 * healthMultiplier);
+                this.speed = 3f;
                 this.moveDelay = 1.2f;
                 break;
             default:
-                this.maxHealth = (int)(6 * healthMultiplier);
-                this.speed = 1.0f;
-                this.moveDelay = 0.5f;
+                this.maxHealth = (int)(25 * healthMultiplier);
+                this.speed = 10f;
+                this.moveDelay = 1f;
                 break;
         }
         
@@ -145,26 +145,26 @@ class Enemy {
         float size = CELL_SIZE * 0.8f;
         
         switch (type) {
-            case FAST:
-                fill(255, 100, 100);
-                ellipse(position.x, position.y, size, size);
+            case FAST:                                                   /////////////////////////
+                fill(0, 250, 100);
+                image(fantasma, position.x,position.y, size*3, size*2);
                 break;
-            case STRONG:
-                fill(100, 100, 255);
-                ellipse(position.x, position.y, size, size);
+            case Dragao:
+                fill(0, 155, 255);
+                image(dragao, position.x,position.y, size*4, size*3);
                 break;
-            case EXPLODER:
-                fill(255, 0, 0);
-                ellipse(position.x, position.y, size, size);                                                //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            case DragaoArm:
+                fill(0, 250, 0);
+                image(dragaobranco, position.x,position.y, size*6, size*5);                                              
                 break;
             case TANK:
                 size = CELL_SIZE * 1.2f;
                 fill(0, 0, 255);
-                ellipse(position.x, position.y, size, size);
+                image(dragaoarm, position.x,position.y, size*6, size*5);
                 break;
-            default:
-                fill(255, 200, 100);
-                ellipse(position.x, position.y, size, size);
+            default:                                                  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                fill(0, 155, 255);
+                image(dragao, position.x,position.y, size*6, size*5);
                 break;
         }
         
@@ -189,7 +189,7 @@ class Enemy {
 enum EnemyType {
     NORMAL,
     FAST,
-    STRONG,
-    EXPLODER,
+    Dragao,
+    DragaoArm,
     TANK
 }

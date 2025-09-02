@@ -4,11 +4,11 @@ import java.util.*;
 final int GRID_WIDTH = 40;
 final int GRID_HEIGHT = 30;
 final int CELL_SIZE = 20;
-final int STARTING_MONEY = 120;
-final int WAVES_TO_WIN = 20;
+final int STARTING_MONEY = 10000000;
+final int WAVES_TO_WIN = 21;
 final float GAME_SPEED_NORMAL = 1.0f;
 final float GAME_SPEED_FAST = 2.0f;
-
+ 
 // Estados do jogo
 GameState gameState;
 GameGrid gameGrid;
@@ -20,12 +20,16 @@ float gameSpeed = GAME_SPEED_NORMAL;
 
 PImage money;
 PImage torre2;
-PImage torreJ2;
 PImage torre3;
 PImage torre4;
 PImage torre5;
 PImage torre6;
 PImage Fundo;
+PImage FundoEscuro;
+PImage dragao;
+PImage dragaobranco;
+PImage dragaoarm;
+PImage fantasma;
 
 void setup() {
   size(800, 600);
@@ -34,20 +38,34 @@ void setup() {
   waveManager = new WaveManager();
   player = new Player(STARTING_MONEY);
   ui = new UI();
-  torre2 = loadImage("torre2.png");
-  torreJ2 = loadImage("torreJ2.jpeg");
-  torre3 = loadImage("torreJ3.jpeg");
-  torre4 = loadImage("torreJ4.jpeg");
-  torre5 = loadImage("torreJ5.jpeg");
-  torre6 = loadImage("torres6.png");
-  money  = loadImage("bau.jpeg");
-  Fundo  = loadImage("fundo.jpeg");
+  torre2 = loadImage("3.png");
+  torre3 = loadImage("2.png");
+  torre4 = loadImage("4.png");
+  torre5 = loadImage("5.png");
+  torre6 = loadImage("1.png");
+  money  = loadImage("bau.png");
+  Fundo  = loadImage("fundo.jpg");
+  FundoEscuro  = loadImage("fundoEscuro.png");
+  dragao = loadImage("Dragaofofo.png");
+  dragaobranco = loadImage("DragaoFofoBranco.png");
+  dragaoarm = loadImage("DragaoFofoArm.png");
+  fantasma = loadImage("fantasma.png");
   
   Fundo.resize(width, height);
+  FundoEscuro.resize(width, height);
 }
 
 void draw() {
-  background(Fundo);
+  
+  
+  if (gameState.getCurrentWave() < 10) {
+    background(Fundo);
+    
+  
+  }else {
+    background(FundoEscuro);
+  }
+  
 
 
   gameGrid.update();
@@ -70,6 +88,8 @@ void mouseDragged() {
     if (gridX >= 0 && gridX < GRID_WIDTH && gridY >= 0 && gridY < GRID_HEIGHT) {
       ui.handleGridClick(gridX, gridY);
     }
+  }else if(mouseButton == RIGHT && gameState.isPlaying()){
+      
   }
 }
 
@@ -83,7 +103,12 @@ void mousePressed() {
     }
   }else if(mouseButton == RIGHT && gameState.isPlaying()){
     
-    
+    int gridX = mouseX / CELL_SIZE;
+    int gridY = mouseY / CELL_SIZE;
+
+    if (gridX >= 0 && gridX < GRID_WIDTH && gridY >= 0 && gridY < GRID_HEIGHT) {
+      gameGrid.Sell(gridX, gridY);
+    }
   }
 }
 

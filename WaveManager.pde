@@ -9,7 +9,7 @@ class WaveManager {
     WaveManager() {
         this.enemyQueue = new LinkedList<>();
         this.spawnTimer = 0;
-        this.spawnDelay = 1.0f;
+        this.spawnDelay = 2.0f;
         this.waveInProgress = false;
         this.enemiesInWave = 0;
         this.enemiesSpawned = 0;
@@ -19,7 +19,7 @@ class WaveManager {
         if (waveInProgress) {
             spawnTimer += 0.016f * gameSpeed;
             
-            if (spawnTimer >= spawnDelay && !enemyQueue.isEmpty()) {
+            if (spawnTimer >= (spawnDelay- (gameState.getCurrentWave()/10)+0.5) && !enemyQueue.isEmpty()) {
                 spawnEnemy();
                 spawnTimer = 0;
             }
@@ -54,15 +54,17 @@ class WaveManager {
     private EnemyType selectEnemyType(int waveNumber) {
         float rand = random(1.0f);
         
-        if (waveNumber >= 3 && rand < 0.25f) {
-            return EnemyType.FAST;
-        } else if (waveNumber >= 5 && rand < 0.20f) {
-            return EnemyType.STRONG;
-        } else if (waveNumber >= 7 && rand < 0.15f) {
-            return EnemyType.EXPLODER;
-        } else if (waveNumber >= 9 && rand < 0.10f) {
+        if (waveNumber >= 10 && rand < 0.30f) {
             return EnemyType.TANK;
-        } else {
+        }else if (waveNumber >= 11) {
+            return EnemyType.FAST;
+        /*}else if (waveNumber >= 5 && rand < 0.25f) {
+            return EnemyType.Dragao;*/
+        } else if (waveNumber >= 4 && waveNumber <= 10 && rand < 0.50f) {
+            return EnemyType.DragaoArm;
+        } else if(waveNumber <= 10 ){
+            return EnemyType.NORMAL;
+        }else{
             return EnemyType.NORMAL;
         }
     }
@@ -98,7 +100,7 @@ class WaveManager {
         fill(255);
         textAlign(LEFT, TOP);
         textSize(16);
-        text("Onda: " + gameState.getCurrentWave() + "/" + WAVES_TO_WIN, 10, 10);
+        text("Onda: " + (gameState.getCurrentWave() < 10? gameState.getCurrentWave(): gameState.getCurrentWave() - 1) + "/" + (WAVES_TO_WIN-1), 10, 10);
         
         if (waveInProgress) {
             text("Inimigos restantes: " + (enemiesInWave - enemiesSpawned + gameGrid.getEnemies().size()), 10, 30);
